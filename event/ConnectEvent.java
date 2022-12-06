@@ -40,10 +40,11 @@ public class ConnectEvent implements ActionListener{
                 p.setSocket(new Socket(host, Integer.valueOf(port)));
                 p.setOut(new PrintWriter(p.getSocket().getOutputStream()));
                 p.setDataOutputStream(new DataOutputStream(p.getSocket().getOutputStream()));
-                p.setPhase(p.getPhase() + "<p>Connected to " + host + " on port : " + port + "</p>");
-                p.getInfo().setText("<html>" + p.getPhase() + "</html>");;
+                p.setPhase(p.getPhase() + "<p style='color:green; margin-bottom:5px;>Connected to " + host + " on port : " + port + "</p>");
+                p.getInfo().setText("<html>" + p.getPhase() + "</html>");
             } catch (NumberFormatException | IOException e1) {
-                e1.printStackTrace();
+                p.setPhase(p.getPhase() + "<p style='color:red; margin-bottom:5px;'>Can't find host or port</p>");
+                p.getInfo().setText("<html>" + p.getPhase() + "</html>");
             }
         }
     }

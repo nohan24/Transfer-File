@@ -98,9 +98,11 @@ public class ClientPanel extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					com.formdev.flatlaf.FlatLightLaf.install();
 					ClientPanel frame = new ClientPanel();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -110,9 +112,6 @@ public class ClientPanel extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public ClientPanel() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 730, 500);
@@ -150,7 +149,6 @@ public class ClientPanel extends JFrame {
 		contentPane.add(send);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
 		panel.setBounds(10, 42, 696, 410);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -169,14 +167,14 @@ public class ClientPanel extends JFrame {
 		panel.add(path);
 		
 		JButton chooseFile = new JButton("Browse");
-		chooseFile.setBounds(435, 11, 89, 20);
+		chooseFile.setBounds(410, 10, 89, 20);
 		chooseFile.setFocusPainted(false);
 		chooseFile.addActionListener(new BrowseEvent(this, path));
 
 		contentPane.add(chooseFile);
 		
 		JButton connect = new JButton("Connect");
-		connect.setBounds(316, 10, 89, 20);
+		connect.setBounds(318, 10, 89, 20);
 		connect.addActionListener(new ConnectEvent(this));
 		contentPane.add(connect);
 	}
