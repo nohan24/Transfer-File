@@ -32,6 +32,7 @@ public class Spliter {
             i++;
             l = b.length - l;
         }
+        file.delete();
         return ret;
     }
 }
