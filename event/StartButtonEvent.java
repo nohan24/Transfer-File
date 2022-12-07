@@ -18,7 +18,7 @@ public class StartButtonEvent implements ActionListener{
         p.setInfo(p.getInfo() + "<p>Server Started!</p>");
         p.setInfo(p.getInfo() + "<p>Waiting for client...</p>");
         p.getInfoLabel().setText("<html> " + p.getInfo() + " </html>");
-        (new ServerSockets(p)).start();
+        (new ServerSockets(p, 7777)).start();
     }
     
 }

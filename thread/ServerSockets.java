@@ -8,15 +8,16 @@ import server.ServerPanel;
 
 public class ServerSockets extends Thread{
     ServerPanel p;
-
-    public ServerSockets(ServerPanel p){
+    int port;
+    public ServerSockets(ServerPanel p, int port){
         this.p = p;
+        this.port = port;
     }    
 
     @Override
     public void run() {
         try {
-            ServerSocket listener = new ServerSocket(7777);
+            ServerSocket listener = new ServerSocket(port);
             while (true) {
                 Socket serverSocket = listener.accept();
                 InetSocketAddress socketAddress = (InetSocketAddress) serverSocket.getRemoteSocketAddress();

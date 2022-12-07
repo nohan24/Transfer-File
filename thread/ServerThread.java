@@ -4,10 +4,13 @@ import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.File;
+import java.util.*;
 import java.io.InputStreamReader;
 import java.net.Socket;
 import java.net.SocketException;
 import server.ServerPanel;
+import data.Spliter;
 
 public class ServerThread extends Thread{
     Socket socket = null;
@@ -15,6 +18,7 @@ public class ServerThread extends Thread{
     BufferedReader in;
     String client;
     ServerPanel p;
+    int[] ports = {7778,7779};
     
     public ServerThread(Socket socket, String client, ServerPanel p){
         this.socket = socket;
@@ -59,5 +63,8 @@ public class ServerThread extends Thread{
 			size -= bytes;
 		}
 		fo.close();
+        Spliter sp = new Spliter();
+        List<File> files = sp.splitFile(new File(filename), 2);
+        System.out.println(files.size());
 	}
 }

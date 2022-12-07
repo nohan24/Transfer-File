@@ -12,7 +12,7 @@ public class Spliter {
     public List<File> splitFile(File file, int n) throws IOException{
         List<File> ret = new ArrayList<>();
         byte[] b = Files.readAllBytes(file.toPath());
-        byte[] c = new byte[1024];
+        byte[] c = new byte[1000000];
         int l = b.length / n;
         FileInputStream in = new FileInputStream(file);
         int j = 0;
@@ -20,14 +20,17 @@ public class Spliter {
         String no = file.getName();
         while (in.available() != 0) {
             j = 0;
-            String name = no + i + ".png";
+            String name = no + ".dat0" + i;
             File g = new File(name);
             FileOutputStream out = new FileOutputStream(g);
             while (in.available() != 0 && j < l) { 
-                j += in.read(c, 0, l);
+                int f = in.read(c, 0, 1000000);
+                j += f;
+                out.write(c, 0, f);
             }
-            out.write(c, 0, j);
             ret.add(g);
+            i++;
+            l = b.length - l;
         }
         return ret;
     }
