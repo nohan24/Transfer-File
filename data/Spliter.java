@@ -9,30 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Spliter {
-    public List<File> splitFile(File file, int n) throws IOException{
-        List<File> ret = new ArrayList<>();
-        byte[] b = Files.readAllBytes(file.toPath());
-        byte[] c = new byte[1000000];
-        int l = b.length / n;
-        FileInputStream in = new FileInputStream(file);
-        int j = 0;
-        int i = 1;
-        String no = file.getName();
-        while (in.available() != 0) {
-            j = 0;
-            String name = no + ".dat0" + i;
-            File g = new File(name);
-            FileOutputStream out = new FileOutputStream(g);
-            while (in.available() != 0 && j < l) { 
-                int f = in.read(c, 0, 1000000);
-                j += f;
-                out.write(c, 0, f);
-            }
-            ret.add(g);
-            i++;
-            l = b.length - l;
+    public List<byte[]> splitFile(byte[] ar) throws IOException{
+        byte[] a1 = new byte[(int)(ar.length/2)];
+        byte[] a2 = new byte[ar.length - a1.length];
+        List<byte[]> datas = new ArrayList<>();
+        for (int i = 0; i < a1.length; i++) {
+            a1[i] = ar[i];
         }
-        file.delete();
-        return ret;
+        for (int i = 0; i < a2.length; i++) {
+            a2[i] = ar[i];
+        }
+        datas.add(a1);
+        datas.add(a2);
+        return datas;  
     }
 }

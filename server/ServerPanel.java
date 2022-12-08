@@ -11,28 +11,41 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import event.StartButtonEvent;
 import thread.*;
+import java.net.Socket;
+import java.io.DataOutputStream;
+
 
 public class ServerPanel extends JFrame {
 
 	private JPanel contentPane;
 	String info = "";
 	JLabel infoLabel;
-	ServerSockets s1;
-	ServerSockets s2;
+	ServerSupp s1;
+	ServerSupp s2;
+	Socket so1, so2;
+	DataOutputStream dataOutputStream = null;
 
-	public ServerSockets getS1() {
+	public DataOutputStream getDataOutputStream() {
+		return dataOutputStream;
+	}
+
+	public void setDataOutputStream(DataOutputStream dataOutputStream) {
+		this.dataOutputStream = dataOutputStream;
+	}
+
+	public ServerSupp getS1() {
 		return s1;
 	}
 
-	public void setS1(ServerSockets s1) {
+	public void setS1(ServerSupp s1) {
 		this.s1 = s1;
 	}
 
-	public ServerSockets getS2() {
+	public ServerSupp getS2() {
 		return s2;
 	}
 
-	public void setS2(ServerSockets s2) {
+	public void setS2(ServerSupp s2) {
 		this.s2 = s2;
 	}
 
@@ -69,8 +82,8 @@ public class ServerPanel extends JFrame {
 	 * Create the frame.
 	 */
 	public ServerPanel() {
-		s1 = new ServerSockets(this, 7778);
-		s2 = new ServerSockets(this, 7779);
+		s1 = new ServerSupp(this, 7778);
+		s2 = new ServerSupp(this, 7779);
 		s1.start();
 		s2.start();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
