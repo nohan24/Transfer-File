@@ -56,6 +56,10 @@ public class SendEvent implements ActionListener{
 			p.getDataOutputStream().flush();
 		}
 		fileInputStream.close();
+        BufferedWriter bw = new BufferedWriter(new FileWriter("client/data.txt", true));
+        bw.write(p.getFilename());
+        bw.newLine();
+        bw.close();
 	}
 
 }

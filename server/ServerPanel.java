@@ -24,6 +24,11 @@ public class ServerPanel extends JFrame {
 	ServerSupp s2;
 	Socket so1, so2;
 	DataOutputStream dataOutputStream = null;
+	Socket[] socks = {so1, so2};
+
+	public Socket[] getSocks(){
+		return socks;
+	}
 
 	public DataOutputStream getDataOutputStream() {
 		return dataOutputStream;

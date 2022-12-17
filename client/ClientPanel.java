@@ -16,6 +16,11 @@ import javax.swing.border.EmptyBorder;
 import event.BrowseEvent;
 import event.ConnectEvent;
 import event.SendEvent;
+import java.awt.event.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
 
 public class ClientPanel extends JFrame {
 
@@ -112,7 +117,7 @@ public class ClientPanel extends JFrame {
 		});
 	}
 
-	public ClientPanel() {
+	public ClientPanel() throws Exception{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 730, 500);
 		contentPane = new JPanel();
@@ -170,8 +175,34 @@ public class ClientPanel extends JFrame {
 		chooseFile.setBounds(410, 10, 89, 20);
 		chooseFile.setFocusPainted(false);
 		chooseFile.addActionListener(new BrowseEvent(this, path));
-
 		contentPane.add(chooseFile);
+
+		JButton getfile = new JButton("Get File");
+		getfile.setBounds(500, 10, 89, 20);
+		getfile.setFocusPainted(false);
+		getfile.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				BufferedReader reader;
+
+				try {
+					reader = new BufferedReader(new FileReader("client/data.txt"));
+					String line = reader.readLine();
+					List<String> l = new ArrayList();
+					while (line != null) {
+						l.add(line);
+						line = reader.readLine();
+					}
+					reader.close();
+					Files ff = new Files(l.toArray());
+					ff.setVisible(true);
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+
+		});
+		contentPane.add(getfile);
 		
 		JButton connect = new JButton("Connect");
 		connect.setBounds(318, 10, 89, 20);
