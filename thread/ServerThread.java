@@ -49,7 +49,6 @@ public class ServerThread extends Thread{
                     byte[] ret = bais.toByteArray();
                     Spliter sp = new Spliter();
                     List<byte[]> r = sp.splitFile(ret);
-                    System.out.println(r.get(1).length);
                     receiveFile(file,s1,0, r);
                     receiveFile(file,s2,1, r);
                     p.setInfo(p.getInfo() + "<p>" + client + " send " + file + "!</p>");

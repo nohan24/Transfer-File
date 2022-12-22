@@ -38,7 +38,9 @@ public class ServerSupp extends Thread{
                     System.out.println(f);  
 
                     int bytes = 0;
-                    File fi = new File("thread/files/" + f);
+                    String path = System.getProperty("user.dir");
+                    path = path.replace("\\", "/");
+                    File fi = new File(path + "/thread/files/" + f);
                     FileInputStream fileInputStream = new FileInputStream(fi);
                     pri.println(fi.length());
                     pri.flush();
