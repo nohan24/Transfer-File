@@ -107,7 +107,6 @@ public class ClientPanel extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					com.formdev.flatlaf.FlatLightLaf.install();
 					ClientPanel frame = new ClientPanel();
 					frame.setVisible(true);
 				} catch (Exception e) {
