@@ -73,7 +73,6 @@ public class ServerPanel extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					com.formdev.flatlaf.FlatLightLaf.install();
 					ServerPanel frame = new ServerPanel();
 					frame.setVisible(true);
 				} catch (Exception e) {
