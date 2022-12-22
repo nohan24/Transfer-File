@@ -3,14 +3,10 @@ package client;
 import javax.swing.*;
 import java.awt.Font;
 import javax.swing.border.EmptyBorder;
-import java.net.*;
 import java.io.*;
 import java.awt.event.*;
 import java.util.*;
-import java.nio.file.*;
-import java.net.ServerSocket;
 import java.net.Socket;
-import server.ServerPanel;
 import java.nio.ByteBuffer;
 
 public class Files extends JFrame{
@@ -74,7 +70,7 @@ public class Files extends JFrame{
                     }
                   
                     byte c[] = joinByteArray(atb.get(0), atb.get(1));
-                    String path = "client/" + comboBox.getSelectedItem();
+                    String path = "clientData/" + comboBox.getSelectedItem();
                     try(FileOutputStream fos = new FileOutputStream(path)){
                         fos.write(c);
                     }catch(Exception exc){}
