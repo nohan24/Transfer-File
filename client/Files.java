@@ -72,6 +72,7 @@ public class Files extends JFrame{
                     byte c[] = joinByteArray(atb.get(0), atb.get(1));
                     String path = System.getProperty("user.dir");
                     path = path.replace("\\", "/");
+                    
                     path =path + "/clientData/" + comboBox.getSelectedItem();
                     try(FileOutputStream fos = new FileOutputStream(path)){
                         fos.write(c);
