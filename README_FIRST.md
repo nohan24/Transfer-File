@@ -1,7 +1,7 @@
 # Transfer-File
 
 SERVER :
-  - Start Server
+  - Start Server (port 7777 : localhost si local)
   - Reçoit les fichiers et les divise en deux et les envoie aux serveurs auxiliaires
   
 CLIENT :
